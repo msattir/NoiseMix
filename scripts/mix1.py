@@ -4,7 +4,6 @@ import numpy as np
 noise_file = "/home/carla/msattir/noise_mix/audio_samples/noise/factory1.wav"
 noise_file = "/home/carla/msattir/noise_mix/audio_samples/noise/babble.wav"
 noise_file = "/home/carla/msattir/noise_mix/audio_samples/noise/factory1_16.wav"
-audio_file = "/home/carla/msattir/noise_mix/audio_samples/audio/sw2263A-ms98-a-trans-108.670875-110.07625.wav"
 audio_file = "/home/carla/msattir/noise_mix/audio_samples/audio/sw04023-2.wav"
 audio_file = "/home/carla/msattir/noise_mix/audio_samples/audio/sw04023-2_16.wav"
 
@@ -21,7 +20,7 @@ noise_mid = int(len(noise)/2)
 audio_mid = int(len(audio)/2)
 
 audio2 = np.asarray(audio, dtype=np.int16)
-
+print (len(audio), len(noise))
 write("/home/carla/msattir/noise_mix/audio_samples/audio/sw04023-2_16_out1.wav", 16000, audio2)
 
 for i in range(audio_mid-noise_mid, audio_mid+noise_mid):
