@@ -13,3 +13,6 @@ Recommended Folder structure
    
 from mix_try run:  
  ```for i in audio/*; do for j in noise/*;do python ../scripts/mix1.py $i $j 20 ./output/;done ; done```
+ 
+ mix1.py   
+ ```"Usage: ./mix1.py [audio_file] [noise_file] [num_times] [output_directory]"```
