@@ -13,8 +13,8 @@ def renormalize(n, range_in, range_out):
 
 
 
-if len(sys.argv) != 4:
-   print ("Usage: ./mix1.py [audio_file] [noise_file] [num_times]")
+if len(sys.argv) != 5:
+   print ("Usage: ./mix1.py [audio_file] [noise_file] [num_times] [output_directory]")
    sys.exit(0)
 
 
@@ -35,6 +35,10 @@ sys_args = (sys.argv)
 audio_file = str(sys_args[1])
 noise_file = str(sys_args[2])
 num_times = int(sys_args[3])
+out_dir_prefix = str(sys_args[4])
+
+audio_str = audio_file.rsplit("/", 1)[1].split(".")[0]
+noise_str = noise_file.rsplit("/", 1)[1].split(".")[0]
 
 ############ Data read and mixing ###############################
 
@@ -65,7 +69,6 @@ if num_times > max_times:
 audio2 = np.asarray(audio, dtype=np.int16)
 #print (len(audio), len(noise))
 
-write("/home/carla/msattir/noise_mix/audio_samples/audio/out1.wav", 16000, audio2)
 
 n_slots = []
 for i in range(0, num_times):
@@ -80,7 +83,7 @@ for audio_n in slots:
    for i in range(audio_n-noise_mid, audio_n+noise_mid):
      audio2[i]=audio[i]+noise[i-(audio_n-noise_mid)]
 
-write("/home/carla/msattir/noise_mix/audio_samples/audio/out2.wav", 16000, audio2)
+write(out_dir_prefix+audio_str+"_out_"+noise_str+".wav", 16000, audio2)
 
 #audio21 = audio2.astype(np.int32)
 #audio3 = audio21 - min(audio21)
