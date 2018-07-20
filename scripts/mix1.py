@@ -2,6 +2,7 @@ from __future__ import division
 from scipy.io.wavfile import read, write
 import numpy as np
 import math
+import sys
 
 def renormalize(n, range_in, range_out):
     delta_in = range_in[1] - range_in[0]
@@ -11,18 +12,29 @@ def renormalize(n, range_in, range_out):
     return (out)
 
 
+
+if len(sys.argv) != 4:
+   print ("Usage: ./mix1.py [audio_file] [noise_file] [num_times]")
+   sys.exit(0)
+
+
 ############ Data files - will make it cl soon #######################
 
-noise_file = "/home/carla/msattir/noise_mix/audio_samples/noise/factory1.wav"
-noise_file = "/home/carla/msattir/noise_mix/audio_samples/noise/babble.wav"
-noise_file = "/home/carla/msattir/noise_mix/audio_samples/noise/factory1_16.wav"
-noise_file = "/home/carla/msattir/noise_mix/audio_samples/noise/gun_2_16.wav"
+#noise_file = "/home/carla/msattir/noise_mix/audio_samples/noise/factory1.wav"
+#noise_file = "/home/carla/msattir/noise_mix/audio_samples/noise/babble.wav"
+#noise_file = "/home/carla/msattir/noise_mix/audio_samples/noise/factory1_16.wav"
+#noise_file = "/home/carla/msattir/noise_mix/audio_samples/noise/gun_2_16.wav"
+#
+#audio_file = "/home/carla/msattir/noise_mix/audio_samples/audio/sw04023-2.wav"
+#audio_file = "/home/carla/msattir/noise_mix/audio_samples/audio/sw04023-2_16.wav"
+#
+#num_times = 12
 
-audio_file = "/home/carla/msattir/noise_mix/audio_samples/audio/sw04023-2.wav"
-audio_file = "/home/carla/msattir/noise_mix/audio_samples/audio/sw04023-2_16.wav"
 
-num_times = 12
-
+sys_args = (sys.argv)
+audio_file = str(sys_args[1])
+noise_file = str(sys_args[2])
+num_times = int(sys_args[3])
 
 ############ Data read and mixing ###############################
 
