@@ -7,9 +7,9 @@ Resampling audio and noise files (Requires SoX)
 
 Recommended Folder structure
 > mix_try1  
- >  | audio
- >  | noise
- >  | output
+  --| audio  
+  --| noise  
+  --| output  
    
 from mix_try run:
 > ```for i in audio/*; do for j in noise/*;do python ../scripts/mix1.py $i $j 20 ./output/;done ; done```
